@@ -1,0 +1,17 @@
+{
+  "source": "index.capture-repaired.html",
+  "capture_interaction": "controls.autoRotate=true speed 2.0 (artifact's own OrbitControls); model shipped static scene",
+  "frames": 192,
+  "unique_frames": 192,
+  "dup_consecutive": 0,
+  "page_errors": [],
+  "probe": {
+    "width": 1920,
+    "height": 1080,
+    "r_frame_rate": "24/1",
+    "nb_read_frames": "192",
+    "pix_fmt": "yuv420p",
+    "codec_name": "h264"
+  },
+  "mp4": "/Users/wesche/projects/model-comparisons/mac-ds4-vision-exp-pagoda-2026-09-02/videos/mac-ds4-vision-exp-q2-pagoda.mp4"
+}

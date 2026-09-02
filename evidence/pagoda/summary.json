@@ -1,0 +1,40 @@
+{
+  "state": "done",
+  "endpoint": "http://127.0.0.1:8000/v1",
+  "model": "deepseek-v4-flash",
+  "prompt_sha256": "ff77a19d76fa230140da967b6a0c474bac87023f333767c347e12fe529a5247b",
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20,
+  "thinking": "on",
+  "reasoning_effort": "high",
+  "request_has_token_cap": false,
+  "orchestration_failsafe_seconds": 21600,
+  "finish_reason": "stop",
+  "saw_done": true,
+  "wall_s": 886.509925958002,
+  "time_to_first_delta_s": 1.4058505001012236,
+  "usage": {
+    "prompt_tokens": 73,
+    "completion_tokens": 26415,
+    "total_tokens": 26488,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 73
+    }
+  },
+  "completion_tokens_per_s_after_first_delta": 29.84394799711484,
+  "reasoning_characters": 56664,
+  "answer_characters": 20110,
+  "html_bytes": 18987,
+  "html_extracted": true,
+  "deployment": {
+    "host": "Mac Studio M4 Max 128GB",
+    "engine": "antirez/ds4 (DwarfStar) 110afdd, Metal",
+    "checkpoint": "antirez/deepseek-v4-gguf DeepSeek-V4-Flash-Vision-Exp-IQ2XXS-w2Q2K-AProjQ8-SExpQ8-OutQ8.gguf",
+    "quantization": "IQ2_XXS gate/up + Q2_K down routed experts; Q8 attn-proj/shared/out",
+    "speculation": "DSpark (Vision-Exp support GGUF), confidence 0.6",
+    "ctx": 32768,
+    "note": "ds4-server ignores client sampling knobs in thinking mode; effort=high because ctx<393216"
+  }
+}
