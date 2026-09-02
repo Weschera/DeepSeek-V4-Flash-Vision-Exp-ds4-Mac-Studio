@@ -14,7 +14,7 @@ Verified **2026-09-02** on ds4 commit `110afdd`, macOS 26.5.2.
 | Model | `DeepSeek-V4-Flash-Vision-Exp-IQ2XXS-w2Q2K-AProjQ8-SExpQ8-OutQ8.gguf` (80.8 GiB, antirez imatrix q2) |
 | Speculative | DSpark (Vision-Exp support GGUF, 5.6 GiB), confidence 0.6 |
 | Vision | `DeepSeek-V4-Flash-Vision-Encoder.gguf` (0.9 GiB) |
-| Memory | 81.6 GiB planned resident (80.76 model + 0.61 KV + 0.25 buffers) at ctx 32768 |
+| Memory | 81.6 GiB planned at ctx 32768 · **97.2 GiB at ctx 1,048,576 (1M verified, see below)** |
 | Load time | ~2 min from cold page cache |
 | **Decode, thinking off** | **31.7 tok/s** code (1,656 tok) · **28.5 tok/s** prose (404 tok) |
 | **Decode, thinking on (pagoda, uncapped)** | **29.8 tok/s** over 26,415 completion tokens, 886 s wall, natural stop |
@@ -70,6 +70,25 @@ curl -s http://127.0.0.1:8000/v1/models | python3 -m json.tool | head -20   # id
 python3 scripts/measure_tok_s.py                 # thinking off, code prompt → decode tok/s from streamed usage
 python3 scripts/measure_tok_s.py --think "..."   # thinking on
 ```
+
+### Context length: 1M fits on 128 GB (verified)
+
+The pagoda run above used `--ctx 32768` as a conservative first load. DeepSeek V4 Flash's compressed MLA KV
+makes context nearly free, so we relaunched at the model's native **1,048,576** and it loaded and served cleanly:
+
+| `--ctx` | KV | Buffers | Model | **Planned total** | Decode (empty ctx, code, thinking off) |
+|---:|---:|---:|---:|---:|---:|
+| 32,768 | 0.61 GiB | 0.25 GiB | 80.76 GiB | **81.62 GiB** | 31.7 tok/s |
+| 1,048,576 | 8.39 GiB | 8.00 GiB | 80.76 GiB | **97.15 GiB** | 32.0 tok/s |
+
+At 1M the Mac sits at ~103 GB wired / ~350 MB free with swap flat (1.1 GB, unchanged) — stable, but nothing else
+large can run alongside it. `/v1/models` reports `context_length: 1048576` and `reasoning_effort: max` (Think Max,
+requires ≥393216) is accepted. Log: `evidence/ds4-server-startup-1M.log`. `scripts/serve_vision_exp.sh` now
+defaults to 1M; use 131072 if you want ~15 GB back.
+
+Not yet measured: decode speed with the context actually filled past 64K (antirez's M4 Max bench shows
+26.8 → 22.9 tok/s from 2K to 64K fill, no DSpark). Prefill is ~205 tok/s at 64K, so very long *inputs* are slow;
+long *outputs* are fine.
 
 ### Server behaviour worth knowing
 - Model id is `deepseek-v4-flash` (a `deepseek-v4-pro` alias is also listed; same model).

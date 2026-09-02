@@ -16,4 +16,4 @@ exec ./ds4-server \
   -m gguf/DeepSeek-V4-Flash-Vision-Exp-IQ2XXS-w2Q2K-AProjQ8-SExpQ8-OutQ8.gguf \
   --vision gguf/DeepSeek-V4-Flash-Vision-Encoder.gguf \
   --dspark --mtp-model gguf/DeepSeek-V4-Flash-Vision-Exp-DSpark-support.gguf \
-  --ctx 32768 --host 0.0.0.0 --port 8000
+  --ctx 1048576 --host 0.0.0.0 --port 8000

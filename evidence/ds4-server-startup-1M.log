@@ -1,0 +1,55 @@
+ds4: DSpark support model detected: gguf/DeepSeek-V4-Flash-Vision-Exp-DSpark-support.gguf (stages=3 block=5 markov_rank=256 tensors=81 missing=0 invalid=0 metadata_errors=0); use --dspark to enable experimental runtime decode
+ds4: DSpark direct verifier-state commits enabled; output may differ from one-token decode due to batched floating-point operation order
+ds4: Metal device Apple M4 Max, 128.00 GiB RAM
+ds4: Metal 4 tensor API disabled for pre-M5/pre-A19 devices
+ds4: drift-patch flags hc_stable=on norm_unify=on kv_raw_f32=off rope_exp2_log2=off math_safe=off tensor_matmul=off
+ds4: Metal model views created in 1.816 ms, residency requested in 36993.761 ms, warmup 3.626 ms (mapped 82697.67 MiB from offset 5.09 MiB)
+ds4: Metal mapped mmaped model as 2 overlapping shared buffers
+ds4: Metal model views created in 0.139 ms, residency requested in 3290.649 ms, warmup 2.908 ms (mapped 5711.67 MiB from offset 0.01 MiB)
+ds4: Metal mapped mmaped model as 3 overlapping shared buffers
+ds4: Metal model views created in 0.056 ms, residency requested in 889.471 ms, warmup 1.127 ms (mapped 889.64 MiB from offset 0.02 MiB)
+ds4: Metal mapped mmaped model as 4 overlapping shared buffers
+ds4: metal backend initialized for graph diagnostics
+ds4: memory: KV 8.39 GiB (raw 0.36 + compressed 8.03) + buffers 8.00 GiB + resident model 80.76 GiB = 97.15 GiB planned
+ds4: memory detail: ctx=1048576 prefill_cap=4096 raw_kv_rows=4352 compressed_kv_rows=262146 backend=metal
+0902 07:49:08 ds4-server: context buffers 16783.67 MiB (ctx=1048576, backend=metal, prefill_chunk=4096, raw_kv_rows=4352, compressed_kv_rows=262146)
+ds4: DSpark target-hidden capture enabled: layers=40,41,42
+0902 07:49:08 ds4-server: listening on http://0.0.0.0:8000
+0902 07:49:36 ds4-server: chat ctx=0..33:33 prompt start
+0902 07:49:38 ds4-server: chat ctx=0..33:33 prompt done 1.556s
+0902 07:49:40 ds4-server: chat ctx=33..83:50 gen=50 decoding chunk=30.91 t/s avg=30.91 t/s 1.618s
+0902 07:49:41 ds4-server: chat ctx=83..133:50 gen=100 decoding chunk=29.55 t/s avg=30.22 t/s 3.309s
+0902 07:49:43 ds4-server: chat ctx=133..183:50 gen=150 decoding chunk=29.52 t/s avg=29.98 t/s 5.003s
+0902 07:49:45 ds4-server: chat ctx=183..233:50 gen=200 decoding chunk=33.08 t/s avg=30.70 t/s 6.515s
+0902 07:49:46 ds4-server: chat ctx=233..283:50 gen=250 decoding chunk=27.29 t/s avg=29.95 t/s 8.346s
+0902 07:49:48 ds4-server: chat ctx=283..333:50 gen=300 decoding chunk=35.14 t/s avg=30.71 t/s 9.769s
+0902 07:49:49 ds4-server: chat ctx=333..383:50 gen=350 decoding chunk=37.14 t/s avg=31.49 t/s 11.116s
+0902 07:49:51 ds4-server: chat ctx=383..433:50 gen=400 decoding chunk=27.49 t/s avg=30.92 t/s 12.935s
+0902 07:49:52 ds4-server: chat ctx=433..483:50 gen=450 decoding chunk=33.35 t/s avg=31.18 t/s 14.434s
+0902 07:49:54 ds4-server: chat ctx=483..533:50 gen=500 decoding chunk=31.04 t/s avg=31.16 t/s 16.045s
+0902 07:49:55 ds4-server: chat ctx=533..583:50 gen=550 decoding chunk=38.88 t/s avg=31.74 t/s 17.331s
+0902 07:49:57 ds4-server: chat ctx=583..633:50 gen=600 decoding chunk=31.73 t/s avg=31.74 t/s 18.906s
+0902 07:49:58 ds4-server: chat ctx=633..683:50 gen=650 decoding chunk=36.67 t/s avg=32.07 t/s 20.270s
+0902 07:50:00 ds4-server: chat ctx=683..733:50 gen=700 decoding chunk=26.82 t/s avg=31.63 t/s 22.134s
+0902 07:50:02 ds4-server: chat ctx=733..783:50 gen=750 decoding chunk=29.68 t/s avg=31.49 t/s 23.819s
+0902 07:50:04 ds4-server: chat ctx=783..833:50 gen=800 decoding chunk=29.58 t/s avg=31.36 t/s 25.509s
+0902 07:50:05 ds4-server: chat ctx=833..883:50 gen=850 decoding chunk=32.19 t/s avg=31.41 t/s 27.062s
+0902 07:50:07 ds4-server: chat ctx=883..933:50 gen=900 decoding chunk=29.90 t/s avg=31.32 t/s 28.734s
+0902 07:50:08 ds4-server: chat ctx=933..983:50 gen=950 decoding chunk=33.24 t/s avg=31.42 t/s 30.238s
+0902 07:50:10 ds4-server: chat ctx=983..1033:50 gen=1000 decoding chunk=35.58 t/s avg=31.60 t/s 31.644s
+0902 07:50:11 ds4-server: chat ctx=1033..1083:50 gen=1050 decoding chunk=36.14 t/s avg=31.79 t/s 33.027s
+0902 07:50:12 ds4-server: chat ctx=1083..1133:50 gen=1100 decoding chunk=37.41 t/s avg=32.01 t/s 34.364s
+0902 07:50:14 ds4-server: chat ctx=1133..1183:50 gen=1150 decoding chunk=28.29 t/s avg=31.83 t/s 36.131s
+0902 07:50:16 ds4-server: chat ctx=1183..1233:50 gen=1200 decoding chunk=35.81 t/s avg=31.98 t/s 37.528s
+0902 07:50:17 ds4-server: chat ctx=1233..1283:50 gen=1250 decoding chunk=36.35 t/s avg=32.13 t/s 38.903s
+0902 07:50:19 ds4-server: chat ctx=1283..1333:50 gen=1300 decoding chunk=27.71 t/s avg=31.93 t/s 40.708s
+0902 07:50:21 ds4-server: chat ctx=1333..1383:50 gen=1350 decoding chunk=27.46 t/s avg=31.74 t/s 42.529s
+0902 07:50:22 ds4-server: chat ctx=1383..1433:50 gen=1400 decoding chunk=36.40 t/s avg=31.89 t/s 43.903s
+0902 07:50:23 ds4-server: chat ctx=1433..1478:45 gen=1445 decoding chunk=31.70 t/s avg=31.88 t/s 45.322s
+0902 07:50:23 ds4-server: chat ctx=0..33:33 gen=1445 finish=stop 46.878s
+0902 07:50:23 ds4-server: live kv cache miss live=1479 prompt=96 common=1 vision=match reason=token-mismatch
+0902 07:50:23 ds4-server: chat ctx=0..96:96 prompt start
+0902 07:50:24 ds4-server: chat ctx=0..96:96 prompt done 1.000s
+0902 07:50:25 ds4-server: chat ctx=96..118:22 gen=22 decoding chunk=28.02 t/s avg=28.02 t/s 0.785s
+0902 07:50:25 ds4-server: thinking live checkpoint remembered ctx=0..96:96 live=118 visible=615
+0902 07:50:25 ds4-server: chat ctx=0..96:96 gen=22 finish=stop 1.785s
